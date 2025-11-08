@@ -11,7 +11,7 @@ x-values:
 
 services:
   tailscale:
-    image: tailscale/tailscale:v1.90.6
+    image: tailscale/tailscale:v1.90.6@sha256:8eb8b450a85856807e8a216c4697333e15f8701cb6d344bed851bf6aa6a9605c
     hostname: homelab
     env_file:
       - .env
@@ -32,7 +32,7 @@ services:
 
   prowlarr:
     !!merge <<: *tailscale
-    image: linuxserver/prowlarr:2.1.5.5216-ls131
+    image: linuxserver/prowlarr:2.1.5.5216-ls131@sha256:643220338204525524db787ff38a607261597f49d1f550694acdb3e908e2b43e
     environment: *common-environment
     volumes:
       - /mnt/storage:/storage
@@ -41,7 +41,7 @@ services:
 
   radarr:
     !!merge <<: *tailscale
-    image: linuxserver/radarr:5.28.0.10274-ls286
+    image: linuxserver/radarr:5.28.0.10274-ls286@sha256:c984533510abe0219a70e80d15bd0d212b7df21baa0913759c4ce6cc9092240b
     environment: *common-environment
     volumes:
       - /mnt/storage:/storage
@@ -50,7 +50,7 @@ services:
 
   sonarr:
     !!merge <<: *tailscale
-    image: linuxserver/sonarr:4.0.16.2944-ls297
+    image: linuxserver/sonarr:4.0.16.2944-ls297@sha256:4b8a853b76337cd5de5f69961e23b7d0792ce7bf0a8be083dd7202ef670bfc34
     environment: *common-environment
     volumes:
       - /mnt/storage:/storage
@@ -59,7 +59,7 @@ services:
 
   nzbget:
     !!merge <<: *tailscale
-    image: linuxserver/nzbget:v25.4-ls219
+    image: linuxserver/nzbget:v25.4-ls219@sha256:ac2762012e5d4c98da301ffa46d06cbd745273519778b9794884a5d513a0a2ca
     environment: *common-environment
     volumes:
       - /mnt/storage:/storage
@@ -69,7 +69,7 @@ services:
 
   qbittorrent:
     !!merge <<: *tailscale
-    image: linuxserver/qbittorrent:5.1.2-r3-ls423
+    image: linuxserver/qbittorrent:5.1.2-r3-ls423@sha256:3908cec5685242ab49b4842124df38c7ff09f82e543c17e0f81e883788f6a611
     environment: *common-environment
     volumes:
       - /mnt/storage:/storage
