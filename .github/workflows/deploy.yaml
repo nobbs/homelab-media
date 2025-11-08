@@ -1,0 +1,34 @@
+name: Deploy to Homelab
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: ci
+    steps:
+      - name: Tailscale
+        uses: tailscale/github-action@a392da0a182bba0e9613b6243ebd69529b1878aa # v4.1.0
+        with:
+          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+          audience: ${{ secrets.TS_AUDIENCE }}
+          tags: tag:github
+
+      - name: SSH into Homelab and Deploy
+        uses: appleboy/ssh-action@91f3272fc5907f4699dcf59761eb622a07342f5a # v1.2.3
+        with:
+          host: ${{ secrets.HOMELAB_HOST }}
+          username: ${{ secrets.HOMELAB_USER }}
+          password: ${{ secrets.HOMELAB_USER }}
+          script: |
+            cd ~/homelab-media
+            git pull origin main
+            docker compose pull
+            docker compose up -d --remove-orphans
