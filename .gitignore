@@ -1,0 +1,8 @@
+# local volumes used by containers
+state/
+
+# environment variables file
+.env
+
+# Tailscale serve config
+config/tailscale/serveconfig.json
