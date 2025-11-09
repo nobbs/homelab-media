@@ -57,6 +57,14 @@ services:
       - ./state/sonarr:/config
     restart: unless-stopped
 
+  profilarr:
+    !!merge <<: *tailscale
+    image: santiagosayshey/profilarr:v1.1.3
+    environment: *common-environment
+    volumes:
+      - ./state/profilarr:/config
+    restart: unless-stopped
+
   nzbget:
     !!merge <<: *tailscale
     image: linuxserver/nzbget:v25.4-ls219@sha256:ac2762012e5d4c98da301ffa46d06cbd745273519778b9794884a5d513a0a2ca
