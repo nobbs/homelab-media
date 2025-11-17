@@ -1,13 +1,11 @@
 {
-  "extends": [
-    "config:best-practices"
-  ],
-  "packageRules": [
-    {
-      "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)\\.(?<build>\\d+)-ls(?<revision>\\d+)$",
-      "matchPackageNames": [
-        "/linuxserver\\//"
-      ]
-    }
-  ]
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"extends": ["config:best-practices"],
+	"packageRules": [
+		{
+			"versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)\\.(?<build>\\d+)-ls(?<revision>\\d+)$",
+			"matchPackageNames": ["/linuxserver\\//"]
+		}
+	],
+	"dependencyDashboardApproval": false
 }
